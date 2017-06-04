@@ -8,9 +8,15 @@ public class moving : MonoBehaviour {
 	void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         transform.Translate(Random.insideUnitCircle * Speed * Time.deltaTime);
-	}
-}
+        float cameraheight = Camera.main.orthographicSize;
+        float camerawidth = cameraheight * Camera.main.aspect;
+        float x = Mathf.Clamp(transform.position.x, -camerawidth, +camerawidth);
+        float y = Mathf.Clamp(transform.position.y, -cameraheight, +cameraheight);
+        transform.position = new Vector3(x, y, 0);
+    }
+    }
