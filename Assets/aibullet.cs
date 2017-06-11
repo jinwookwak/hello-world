@@ -14,9 +14,9 @@ public class aibullet : MonoBehaviour {
 	void Update () {
 		
 	}
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject != ai)
+        if (collision.gameObject.tag != "ai" && collision.gameObject.tag != "aibullet")
         {
             Destroy(gameObject);
             Destroy(collision.gameObject);

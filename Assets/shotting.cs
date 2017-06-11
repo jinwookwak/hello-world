@@ -6,6 +6,9 @@ public class shotting : MonoBehaviour
 {
     public GameObject SomPrefab;
     public float BulletSpeed;
+    public GameObject QPrefab;
+    public float Qcooltime;
+    float Qnowofftime;
 
 	// Use this for initialization
 	void Start () {
@@ -26,5 +29,22 @@ public class shotting : MonoBehaviour
             direction.Normalize();
             newPrefab.GetComponent<Rigidbody2D>().AddForce(direction * BulletSpeed);
         }
-	}
+
+        if (Input.GetKey(KeyCode.Q) && Qnowofftime <= 0)
+        {
+            Qnowofftime = Qcooltime;
+
+            Vector3 gameWorldpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            GameObject newPrefab = Instantiate(QPrefab);
+            newPrefab.transform.position = transform.position;
+            newPrefab.GetComponent<skill>().player = gameObject;
+
+            Vector2 direction = gameWorldpos - transform.position;
+            direction.Normalize();
+            newPrefab.GetComponent<Rigidbody2D>().AddForce(direction * BulletSpeed);
+        }
+
+        Qnowofftime -= Time.deltaTime;
+    }
 }
