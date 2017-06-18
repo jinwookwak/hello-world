@@ -14,15 +14,30 @@ public class skill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject != player && collision.gameObject.tag != "bullet")
+        if (Input.GetMouseButtonDown(1))
         {
+            GameObject[] ai = GameObject.FindGameObjectsWithTag("ai");
+            GameObject[] aibullet = GameObject.FindGameObjectsWithTag("aibullet");
+
+            foreach (GameObject obj in ai)
+            {
+                if((obj.transform.position -transform.position).magnitude < 2.0f)
+                {
+                    Destroy(obj);
+                }
+            }
+
+            foreach (GameObject obj in aibullet)
+            {
+                if ((obj.transform.position - transform.position).magnitude < 2.0f)
+                {
+                    Destroy(obj);
+                }
+            }
+
             Destroy(gameObject);
-            Destroy(collision.gameObject);
         }
     }
+
+
 }
