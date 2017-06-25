@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class startbutton : MonoBehaviour {
-
+    public List<string> mapname;
 	public void click()
     {
-        SceneManager.LoadScene("6-4");
+        string map = mapname[Random.Range(0, mapname.Count)];
+        SceneManager.LoadScene(map);
 	}
 }

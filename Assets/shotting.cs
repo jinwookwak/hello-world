@@ -8,7 +8,7 @@ public class shotting : MonoBehaviour
     public float BulletSpeed;
     public GameObject QPrefab;
     public float Qcooltime;
-    float Qnowofftime;
+    public float Qnowofftime;
 
 	// Use this for initialization
 	void Start () {
@@ -45,6 +45,9 @@ public class shotting : MonoBehaviour
             newPrefab.GetComponent<Rigidbody2D>().AddForce(direction * BulletSpeed);
         }
 
-        Qnowofftime -= Time.deltaTime;
+        if (Qnowofftime > 0.0)
+        {
+            Qnowofftime -= Time.deltaTime;
+        }
     }
 }
