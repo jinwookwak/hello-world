@@ -9,16 +9,19 @@ public class shotting : MonoBehaviour
     public GameObject QPrefab;
     public float Qcooltime;
     public float Qnowofftime;
+    public int maxbulletcount;
+    int bulletcount;
 
 	// Use this for initialization
 	void Start () {
-        
+        bulletcount = maxbulletcount;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown(0))
+		if (Input.GetMouseButtonDown(0) && bulletcount >0)
         {
+            bulletcount -= 1;
             Vector3 gameWorldpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             GameObject newPrefab = Instantiate(SomPrefab);
@@ -28,6 +31,11 @@ public class shotting : MonoBehaviour
             Vector2 direction = gameWorldpos - transform.position;
             direction.Normalize();
             newPrefab.GetComponent<Rigidbody2D>().AddForce(direction * BulletSpeed);
+        }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            bulletcount = maxbulletcount;
         }
 
         if (Input.GetKey(KeyCode.Q) && Qnowofftime <= 0)
