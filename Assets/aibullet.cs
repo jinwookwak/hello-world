@@ -25,7 +25,7 @@ public class aibullet : MonoBehaviour {
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag != "ai" && collision.gameObject.tag != "aibullet")
+        if (collision.gameObject.tag != "ai" && collision.gameObject.tag != "aibullet" && collision.gameObject.tag != "wall")
         {
             Destroy(gameObject);
             Destroy(collision.gameObject);

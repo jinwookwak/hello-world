@@ -11,27 +11,28 @@ public class move : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        Vector2 velocity = new Vector2(0.0f, 0.0f);
         if (Input.GetKey(KeyCode.W))
         {
-            transform.Translate(0.0f, 5.0f * Time.deltaTime, 0.0f);
+            velocity.y = 5.0f;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Translate(-5.0f * Time.deltaTime, 0.0f, 0.0f);
+            velocity.x = -5.0f;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.Translate(0.0f, -5.0f * Time.deltaTime, 0.0f);
+            velocity.y = -5.0f;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(5.0f * Time.deltaTime, 0.0f, 0.0f);
+            velocity.x = 5.0f;
         }
-        float cameraheight = Camera.main.orthographicSize;
-        float camerawidth = cameraheight * Camera.main.aspect;
-        float x = Mathf.Clamp(transform.position.x, -camerawidth, +camerawidth);
-        float y = Mathf.Clamp(transform.position.y, -cameraheight, +cameraheight);
-        transform.position = new Vector3(x, y, 0);
+
+        GetComponent<Rigidbody2D>().velocity = velocity;
+        Vector3 Cameraposition = transform.position;
+        Cameraposition.z = -10;
+        Camera.main.transform.position = Cameraposition;
     }
 
 }

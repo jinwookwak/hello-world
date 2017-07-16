@@ -26,7 +26,7 @@ public class bullet : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject != player && collision.gameObject.tag != "bullet")
+        if (collision.gameObject != player && collision.gameObject.tag != "bullet" && collision.gameObject.tag != "wall")
         {
             Destroy(gameObject);
             Destroy(collision.gameObject);
