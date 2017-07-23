@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class aibullet : MonoBehaviour {
     public GameObject ai;
-
+    public float attack;
     // Use this for initialization
     void Start() {
 
@@ -28,7 +28,15 @@ public class aibullet : MonoBehaviour {
         if (collision.gameObject.tag != "ai" && collision.gameObject.tag != "aibullet" && collision.gameObject.tag != "wall")
         {
             Destroy(gameObject);
-            Destroy(collision.gameObject);
+            move movecomponent = collision.gameObject.GetComponent<move>();
+            if (movecomponent == null)
+            {
+                Destroy(collision.gameObject);
+            }
+            else
+            {
+                movecomponent.damage(attack);
+            }
         }
     }      
 }
