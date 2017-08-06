@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class restartbutton : MonoBehaviour {
+public class Titlebutton : MonoBehaviour {
+
     public void click()
     {
         SceneManager.LoadScene("readypage");

@@ -12,22 +12,17 @@ public class bullet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        float cameraheight = Camera.main.orthographicSize;
-        float camerawidth = cameraheight * Camera.main.aspect;
-        if (transform.position.x < -camerawidth || transform.position.x > +camerawidth)
-        {
-            Destroy(gameObject);
-        }
-        if (transform.position.y < -cameraheight || transform.position.y > +cameraheight)
-        {
-            Destroy(gameObject);
-        }
+
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject != player && collision.gameObject.tag != "bullet" && collision.gameObject.tag != "wall")
         {
+            if(collision.gameObject.tag=="ai")
+            {
+                PlayerPrefs.SetInt("money", PlayerPrefs.GetInt("money") + 100);
+            }
             Destroy(gameObject);
             Destroy(collision.gameObject);
         }

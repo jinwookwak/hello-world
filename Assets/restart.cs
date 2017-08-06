@@ -11,5 +11,10 @@ public class restart : MonoBehaviour {
         {
             ui.SetActive(true);
         }
+
+        if(ai.Length == 0)
+        {
+            PlayerPrefs.SetInt("money", PlayerPrefs.GetInt("money") + 1000);
+        }
     }
 }
