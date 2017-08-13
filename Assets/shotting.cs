@@ -7,6 +7,7 @@ public class shotting : MonoBehaviour
     public GameObject SomPrefab;
     public float BulletSpeed;
     public GameObject QPrefab;
+    public GameObject startpoint;
     public float Qcooltime;
     public float Qnowofftime;
     public int maxbulletcount;
@@ -25,7 +26,7 @@ public class shotting : MonoBehaviour
             Vector3 gameWorldpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             GameObject newPrefab = Instantiate(SomPrefab);
-            newPrefab.transform.position = transform.position;
+            newPrefab.transform.position = startpoint.transform.position;
             newPrefab.GetComponent<bullet>().player = gameObject;
 
             Vector2 direction = gameWorldpos - transform.position;
