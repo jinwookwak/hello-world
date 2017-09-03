@@ -13,6 +13,7 @@ public class aispawner : MonoBehaviour
     public float backgrounddistance;
     public int backgroundcount;
     public float yrange;
+    public float aiyrange;
     float backgroundmax;
 
 	// Use this for initialization
@@ -30,7 +31,7 @@ public class aispawner : MonoBehaviour
             {
                 Vector3 enemyposition = new Vector3();
                 enemyposition.x = Random.Range(maxX, maxX +distance);
-                enemyposition.y = Random.Range(-yrange, yrange);
+                enemyposition.y = Random.Range(-aiyrange, aiyrange);
 
                 GameObject enemy = Instantiate(ai);
 
