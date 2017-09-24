@@ -32,7 +32,6 @@ public class move : MonoBehaviour {
             velocity.x = 5.0f;
             GetComponent<SpriteRenderer>().flipX = false;
         }
-
         GetComponent<Rigidbody2D>().velocity = velocity;
         Vector3 Cameraposition = transform.position;
         Cameraposition.z = -10;

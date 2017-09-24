@@ -26,6 +26,15 @@ public class PlayerControllerScript : MonoBehaviour
     {
         //플레이어 이동
         Move();
+
+        if (_moveVector.x < 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
+        if (_moveVector.x > 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
     }
 
     public void HandleInput()

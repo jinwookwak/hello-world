@@ -31,7 +31,7 @@ public class joystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointer
             inputVector = (inputVector.magnitude > 1.0f) ? inputVector.normalized : inputVector;
 
             joystickImg.rectTransform.anchoredPosition = new Vector3(inputVector.x * (bgImg.rectTransform.sizeDelta.x / 3)
-                , inputVector.y * (bgImg.rectTransform.sizeDelta.y / 3));
+                            , inputVector.y * (bgImg.rectTransform.sizeDelta.y / 3));
         }
     }
 
@@ -59,6 +59,6 @@ public class joystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointer
     // Update is called once per frame
     void Update ()
     {
-		
-	}
+
+    }
 }
