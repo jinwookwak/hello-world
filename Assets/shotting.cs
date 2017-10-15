@@ -30,16 +30,32 @@ public class shotting : MonoBehaviour
             stick.GetVerticalValue() != 0.0f) &&
             delay>= bulletdelay)
         {
-            Vector3 gameWorldpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (PlayerPrefs.GetInt("gun") == 1)
+            {
+                Vector3 gameWorldpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            GameObject newPrefab = Instantiate(SomPrefab);
-            newPrefab.transform.position = startpoint.transform.position;
-            newPrefab.GetComponent<bullet>().player = player;
+                GameObject newPrefab = Instantiate(SomPrefab);
+                newPrefab.transform.position = startpoint.transform.position;
+                newPrefab.GetComponent<bullet>().player = player;
 
-            Vector2 direction = new Vector2(stick.GetHorizontalValue(), stick.GetVerticalValue());
-            direction.Normalize();
-            newPrefab.GetComponent<Rigidbody2D>().AddForce(direction * BulletSpeed);
-            delay = 0.0f;
+                Vector2 direction = new Vector2(stick.GetHorizontalValue(), stick.GetVerticalValue());
+                direction.Normalize();
+                newPrefab.GetComponent<Rigidbody2D>().AddForce(direction * BulletSpeed * 1.05f);
+                delay = bulletdelay * 0.05f;
+            }
+            else
+            {
+                Vector3 gameWorldpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+                GameObject newPrefab = Instantiate(SomPrefab);
+                newPrefab.transform.position = startpoint.transform.position;
+                newPrefab.GetComponent<bullet>().player = player;
+
+                Vector2 direction = new Vector2(stick.GetHorizontalValue(), stick.GetVerticalValue());
+                direction.Normalize();
+                newPrefab.GetComponent<Rigidbody2D>().AddForce(direction * BulletSpeed);
+                delay = 0.0f;
+            }
         }
         delay += Time.deltaTime;
         if (Input.GetKey(KeyCode.Q) && Qnowofftime <= 0)

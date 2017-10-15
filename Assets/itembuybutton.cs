@@ -20,4 +20,16 @@ public class itembuybutton : MonoBehaviour
             GetComponent<Text>().text = "구매 " + price.ToString();
         }
 	}
+    public void click()
+    {
+        if (PlayerPrefs.GetInt("money") < price)
+            return;
+        if (PlayerPrefs.GetInt(selecteditem) == 1)
+        {
+            return;
+        }
+            PlayerPrefs.SetInt("money", PlayerPrefs.GetInt("money") - price);
+
+        PlayerPrefs.SetInt(selecteditem, 1);
+    }
 }
