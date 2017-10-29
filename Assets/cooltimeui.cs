@@ -12,7 +12,7 @@ public class cooltimeui : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        int cooltime = (int)player.GetComponent<shotting>().Qnowofftime;
+        int cooltime = (int)player.GetComponent<PlayerControllerScript>().distance;
 
         GetComponent<Text>().text = cooltime.ToString();
 	}

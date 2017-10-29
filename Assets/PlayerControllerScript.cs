@@ -9,7 +9,9 @@ public class PlayerControllerScript : MonoBehaviour
     
     private Vector3 _moveVector; //플레이어 이동벡터
     private Transform _transform;
-    
+    public float distance;
+
+   
     void Start()
     {
         _transform = transform;      //Transform 캐싱
@@ -53,6 +55,8 @@ public class PlayerControllerScript : MonoBehaviour
 
     public void Move()
     {
-        _transform.Translate(_moveVector * MoveSpeed * Time.deltaTime);
+        Vector3 movedir = _moveVector * MoveSpeed * Time.deltaTime;
+        _transform.Translate(movedir);
+        distance += movedir.magnitude;
     }
 }

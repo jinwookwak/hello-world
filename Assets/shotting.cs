@@ -30,7 +30,7 @@ public class shotting : MonoBehaviour
             stick.GetVerticalValue() != 0.0f) &&
             delay>= bulletdelay)
         {
-            if (PlayerPrefs.GetInt("gun") == 1)
+            if (PlayerPrefs.GetString("equip") == "gun-r2")
             {
                 Vector3 gameWorldpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -42,6 +42,58 @@ public class shotting : MonoBehaviour
                 direction.Normalize();
                 newPrefab.GetComponent<Rigidbody2D>().AddForce(direction * BulletSpeed * 1.05f);
                 delay = bulletdelay * 0.05f;
+            }
+            else if (PlayerPrefs.GetString("equip") == "gun-b1")
+            {
+                Vector3 gameWorldpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+                GameObject newPrefab = Instantiate(SomPrefab);
+                newPrefab.transform.position = startpoint.transform.position;
+                newPrefab.GetComponent<bullet>().player = player;
+
+                Vector2 direction = new Vector2(stick.GetHorizontalValue(), stick.GetVerticalValue());
+                direction.Normalize();
+                newPrefab.GetComponent<Rigidbody2D>().AddForce(direction * BulletSpeed * 1.06f);
+                delay = bulletdelay * 0.1f;
+            }
+            else if (PlayerPrefs.GetString("equip") == "gun-g1")
+            {
+                Vector3 gameWorldpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+                GameObject newPrefab = Instantiate(SomPrefab);
+                newPrefab.transform.position = startpoint.transform.position;
+                newPrefab.GetComponent<bullet>().player = player;
+
+                Vector2 direction = new Vector2(stick.GetHorizontalValue(), stick.GetVerticalValue());
+                direction.Normalize();
+                newPrefab.GetComponent<Rigidbody2D>().AddForce(direction * BulletSpeed * 1.1f);
+                delay = bulletdelay * 0.1f;
+            }
+            else if (PlayerPrefs.GetString("equip") == "gun-y3")
+            {
+                Vector3 gameWorldpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+                GameObject newPrefab = Instantiate(SomPrefab);
+                newPrefab.transform.position = startpoint.transform.position;
+                newPrefab.GetComponent<bullet>().player = player;
+
+                Vector2 direction = new Vector2(stick.GetHorizontalValue(), stick.GetVerticalValue());
+                direction.Normalize();
+                newPrefab.GetComponent<Rigidbody2D>().AddForce(direction * BulletSpeed * 1.15f);
+                delay = bulletdelay * 0.1f;
+            }
+            else if (PlayerPrefs.GetString("equip") == "gun-g3")
+            {
+                Vector3 gameWorldpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+                GameObject newPrefab = Instantiate(SomPrefab);
+                newPrefab.transform.position = startpoint.transform.position;
+                newPrefab.GetComponent<bullet>().player = player;
+
+                Vector2 direction = new Vector2(stick.GetHorizontalValue(), stick.GetVerticalValue());
+                direction.Normalize();
+                newPrefab.GetComponent<Rigidbody2D>().AddForce(direction * BulletSpeed * 1.16f);
+                delay = bulletdelay * 0.11f;
             }
             else
             {
