@@ -13,6 +13,15 @@ public class moving : MonoBehaviour {
     void Update()
     {
         GetComponent<Rigidbody2D>().velocity = Random.insideUnitCircle * Speed;
+        if(GetComponent<Rigidbody2D>().velocity.x > 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
+        if(GetComponent<Rigidbody2D>().velocity.x < 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+
 
     }
     }
