@@ -45,6 +45,7 @@ public class bullet : MonoBehaviour {
             if(collision.gameObject.tag=="ai")
             {
                 PlayerPrefs.SetInt("money", PlayerPrefs.GetInt("money") + 100);
+                player.GetComponent<move>().kill++;
             }
             Destroy(gameObject);
             Destroy(collision.gameObject);

@@ -5,6 +5,8 @@ using UnityEngine;
 public class move : MonoBehaviour {
     public float maxHP;
     public float HP;
+    public int kill;
+
 	// Use this for initialization
 	void Start () {
         HP = maxHP;
@@ -40,8 +42,24 @@ public class move : MonoBehaviour {
     public void damage(float value)
     {
         HP -= value;
-        if (HP<=0.0f)
+        if (HP <= 0.0f)
         {
+            int maxkill = PlayerPrefs.GetInt("maxkill");
+            if (kill > maxkill)
+            {
+                PlayerPrefs.SetInt("maxkill", kill);
+            }
+            int totalkill = PlayerPrefs.GetInt("totalkill");
+            PlayerPrefs.SetInt("totalkill", totalkill + kill);
+
+            int distance = (int)GetComponent<PlayerControllerScript>().distance;
+            int maxdistance = PlayerPrefs.GetInt("maxdistance");
+            if (distance > maxdistance)
+            {
+                PlayerPrefs.SetInt("maxdistance", distance);
+            }
+            int totaldistance = PlayerPrefs.GetInt("totaldistance");
+            PlayerPrefs.SetInt("totaldistance", totaldistance + distance);
             Destroy(gameObject);
         }
     }
